@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>for you 💌</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffe6f0, #fff0f5, #ffeef8);
+  text-align: center;
+  overflow-x: hidden;
+  color: #b30059;
+}
+
+.card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  margin: 120px auto;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: Georgia;
+  background: #ffb6c1;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float 8s infinite ease-in;
+  opacity: 0.6;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart:before { top: -7px; left: 0; }
+.heart:after { left: -7px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for (let i = 0; i < 25; i++) {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (4 + Math.random() * 6) + "s";
+  document.body.appendChild(h);
+}
+
+function next1(){
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("page2").classList.remove("hidden");
+}
+
+function next2(){
+  document.getElementById("page2").classList.add("hidden");
+  document.getElementById("page3").classList.remove("hidden");
+}
+</script>
+
+<div id="page1" class="card">
+  <h1>hi you 💗</h1>
+  <p>i made this for someone very special</p>
+  <button onclick="next1()">open it</button>
+</div>
+
+<div id="page2" class="card hidden">
+  <h1>do you want to continue? 🎀</h1>
+  <button onclick="next2()">yes</button>
+  <button onclick="next2()">of course yes</button>
+</div>
+
+<div id="page3" class="card hidden">
+  <h1>💌 happy birthday 💌</h1>
+  <p>
+    I love you. I’m not there but I’m always with you.<br>
+    You mean more than words can explain ♡
+  </p>
+
+  <h3>🎧 voice message</h3>
+
+  <audio controls>
+    <source src="voice.mp3" type="audio/mpeg">
+    <source src="voice.m4a" type="audio/mp4">
+    Your browser does not support audio.
+  </audio>
+
+</div>
+
+</body>
+</html>
